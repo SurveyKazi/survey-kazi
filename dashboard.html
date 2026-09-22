@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Dashboard - SurveyKazi</title>
 
     <style>
@@ -145,17 +144,12 @@
         }
 
         @media (max-width: 650px) {
-
             .stats {
                 grid-template-columns: 1fr;
             }
 
             .actions {
                 grid-template-columns: 1fr;
-            }
-
-            .header-content {
-                padding: 0 5px;
             }
         }
     </style>
@@ -164,7 +158,6 @@
 <body>
 
 <header>
-
     <div class="header-content">
 
         <h1>SurveyKazi</h1>
@@ -174,7 +167,6 @@
         </a>
 
     </div>
-
 </header>
 
 
@@ -182,113 +174,69 @@
 
     <div class="welcome">
 
-        <h2>Welcome to your Dashboard 👋</h2>
+        <h2>
+            Welcome, <span id="userName">User</span> 👋
+        </h2>
 
         <p>Complete surveys and earn points.</p>
 
     </div>
 
 
-    <!-- ACCOUNT STATISTICS -->
-
     <div class="stats">
 
         <div class="stat">
-
-            <h3>
-                <span id="points">0</span>
-            </h3>
-
+            <h3><span id="points">0</span></h3>
             <p>Available Points</p>
-
         </div>
 
-
         <div class="stat">
-
-            <h3>
-                <span id="completed">0</span>
-            </h3>
-
+            <h3><span id="completed">0</span></h3>
             <p>Surveys Completed</p>
-
         </div>
 
-
         <div class="stat">
-
             <h3>0</h3>
-
             <p>Pending Rewards</p>
-
         </div>
 
     </div>
 
-
-    <!-- MAIN ACTIONS -->
 
     <div class="actions">
 
         <a href="surveys.html" class="action">
-
             <h3>📝 Available Surveys</h3>
-
-            <p>
-                View available surveys and earn points.
-            </p>
-
+            <p>View available surveys and earn points.</p>
         </a>
-
 
         <a href="withdraw.html" class="action">
-
             <h3>💸 Withdraw</h3>
-
-            <p>
-                Request a withdrawal of your available points.
-            </p>
-
+            <p>Request a withdrawal of your available points.</p>
         </a>
-
 
         <a href="transactions.html" class="action">
-
             <h3>📊 Transaction History</h3>
-
-            <p>
-                View your survey earnings and withdrawal requests.
-            </p>
-
+            <p>View your survey earnings and withdrawal requests.</p>
         </a>
 
-
         <a href="index.html" class="action">
-
             <h3>🏠 Home</h3>
-
-            <p>
-                Return to the SurveyKazi homepage.
-            </p>
-
+            <p>Return to the SurveyKazi homepage.</p>
         </a>
 
     </div>
 
 
-    <!-- AVAILABLE SURVEYS -->
-
     <div class="section">
 
         <h2>Available Surveys</h2>
-
 
         <div class="survey">
 
             <h3>Consumer Shopping Survey</h3>
 
             <p>⏱ 5–10 minutes</p>
-
             <p>🎁 Reward: 50 Points</p>
 
             <a href="survey.html" class="start">
@@ -297,13 +245,11 @@
 
         </div>
 
-
         <div class="survey">
 
             <h3>Technology Survey</h3>
 
             <p>⏱ 10 minutes</p>
-
             <p>🎁 Reward: 100 Points</p>
 
             <a href="surveys.html" class="start">
@@ -312,13 +258,11 @@
 
         </div>
 
-
         <div class="survey">
 
             <h3>Entertainment Survey</h3>
 
             <p>⏱ 5 minutes</p>
-
             <p>🎁 Reward: 75 Points</p>
 
             <a href="surveys.html" class="start">
@@ -334,16 +278,26 @@
 
 <script>
 
-    // Load saved points
-    let points =
+    // Get registered user
+    const savedUser =
+        JSON.parse(localStorage.getItem("surveyUser"));
+
+    if (savedUser) {
+        document.getElementById("userName").textContent =
+            savedUser.name;
+    }
+
+
+    // Get points
+    const points =
         Number(localStorage.getItem("surveyPoints")) || 0;
 
     document.getElementById("points").textContent =
         points;
 
 
-    // Load completed surveys
-    let completed =
+    // Get completed surveys
+    const completed =
         Number(localStorage.getItem("completedSurveys")) || 0;
 
     document.getElementById("completed").textContent =
@@ -353,7 +307,7 @@
     // Logout
     function logout() {
 
-        alert("You have been logged out.");
+        localStorage.removeItem("surveyLoggedIn");
 
     }
 
