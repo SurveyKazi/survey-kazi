@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SurveyKazi - Earn Rewards</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #0b5ed7;
+            color: white;
+            padding: 18px;
+        }
+
+        nav {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 12px;
+            font-size: 14px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #666;
+            max-width: 600px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            margin: 6px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #0b5ed7;
+            color: white;
+        }
+
+        .secondary {
+            border: 1px solid #0b5ed7;
+            color: #0b5ed7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 18px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+
+        .section h2 {
+            color: #0b5ed7;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .step {
+            background: #f5f7fb;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .surveys {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .survey {
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .survey h3 {
+            margin-top: 0;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .steps,
+            .surveys {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <nav>
+
+        <div class="logo">
+            SurveyKazi
+        </div>
+
+        <div>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Login</a>
+        </div>
+
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>Share Your Opinion. Earn Rewards.</h1>
+
+    <p>
+        Join SurveyKazi, complete available surveys,
+        share your opinions and earn points for eligible
+        participation.
+    </p>
+
+    <div class="buttons">
+
+        <a href="register.html" class="btn primary">
+            Create Account
+        </a>
+
+        <a href="login.html" class="btn secondary">
+            Login
+        </a>
+
+    </div>
+
+</section>
+
+
+<div class="container">
+
+    <div class="section">
+
+        <h2>How SurveyKazi Works</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <h3>1️⃣ Create an Account</h3>
+                <p>
+                    Register your SurveyKazi account.
+                </p>
+            </div>
+
+            <div class="step">
+                <h3>2️⃣ Complete Surveys</h3>
+                <p>
+                    Choose available surveys and answer
+                    the questions.
+                </p>
+            </div>
+
+            <div class="step">
+                <h3>3️⃣ Earn Points</h3>
+                <p>
+                    Receive points for eligible completed
+                    surveys.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>Available Surveys</h2>
+
+        <div class="surveys">
+
+            <div class="survey">
+
+                <h3>Consumer Shopping</h3>
+
+                <p>⏱ 5–10 minutes</p>
+
+                <p>🎁 50 Points</p>
+
+                <a href="survey.html" class="btn primary">
+                    Start
+                </a>
+
+            </div>
+
+
+            <div class="survey">
+
+                <h3>Technology Survey</h3>
+
+                <p>⏱ 10 minutes</p>
+
+                <p>🎁 100 Points</p>
+
+                <a href="surveys.html" class="btn primary">
+                    View
+                </a>
+
+            </div>
+
+
+            <div class="survey">
+
+                <h3>Entertainment Survey</h3>
+
+                <p>⏱ 5 minutes</p>
+
+                <p>🎁 75 Points</p>
+
+                <a href="surveys.html" class="btn primary">
+                    View
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>Ready to Get Started?</h2>
+
+        <p>
+            Create your SurveyKazi account and explore
+            available surveys.
+        </p>
+
+        <a href="register.html" class="btn primary">
+            Join SurveyKazi
+        </a>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>© 2026 SurveyKazi. All rights reserved.</p>
+
+    <p>
+        <a href="about.html">About</a>
+        |
+        <a href="contact.html">Contact</a>
+        |
+        <a href="login.html">Login</a>
+    </p>
+
+</footer>
+
+</body>
+          </html>
