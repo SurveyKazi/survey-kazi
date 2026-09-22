@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SurveyKazi | Survey</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 30px 6%;
+    }
+
+    .progress {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 10px;
+      margin: 20px 0 30px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 25%;
+      background: #2563eb;
+    }
+
+    .question {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .question-number {
+      color: #2563eb;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 23px;
+      line-height: 1.4;
+      margin-bottom: 25px;
+    }
+
+    .option {
+      display: block;
+      padding: 15px;
+      margin-bottom: 12px;
+      border: 1px solid #d0d5dd;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      border-color: #2563eb;
+      background: #f8faff;
+    }
+
+    .option input {
+      margin-right: 10px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    button {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .next {
+      background: #2563eb;
+      color: white;
+    }
+
+    .cancel {
+      background: #e5e7eb;
+      color: #172033;
+    }
+
+    .complete {
+      display: none;
+      text-align: center;
+      background: white;
+      padding: 35px 25px;
+      border-radius: 14px;
+    }
+
+    .complete h1 {
+      color: #16a34a;
+    }
+
+    .points {
+      font-size: 25px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #16a34a;
+    }
+
+    @media(max-width:500px) {
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">SurveyKazi</div>
+</header>
+
+
+<div class="container">
+
+  <h2>Consumer Shopping Survey</h2>
+
+  <div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+
+  <div class="question" id="questionBox">
+
+    <div class="question-number" id="questionNumber">
+      Question 1 of 4
+    </div>
+
+    <h1 id="questionText">
+      How often do you shop online?
+    </h1>
+
+    <div id="options">
+
+      <label class="option">
+        <input type="radio" name="answer" value="Daily">
+        Daily
+      </label>
+
+      <label class="option">
+        <input type="radio" name="answer" value="Weekly">
+        Weekly
+      </label>
+
+      <label class="option">
+        <input type="radio" name="answer" value="Monthly">
+        Monthly
+      </label>
+
+      <label class="option">
+        <input type="radio" name="answer" value="Rarely">
+        Rarely
+      </label>
+
+    </div>
+
+    <div class="buttons">
+
+      <button class="cancel" onclick="goBack()">
+        Exit
+      </button>
+
+      <button class="next" onclick="nextQuestion()">
+        Next
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="complete" id="completeBox">
+
+    <h1>Survey Completed! 🎉</h1>
+
+    <p>
+      Thank you for sharing your opinion.
+    </p>
+
+    <div class="points">
+      +50 Points
+    </div>
+
+    <button class="next" onclick="dashboard()">
+      Return to Dashboard
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  const questions = [
+
+    {
+      question: "How often do you shop online?",
+      options: [
+        "Daily",
+        "Weekly",
+        "Monthly",
+        "Rarely"
+      ]
+    },
+
+    {
+      question: "What type of products do you purchase most often?",
+      options: [
+        "Clothes",
+        "Electronics",
+        "Food",
+        "Other"
+      ]
+    },
+
+    {
+      question: "What influences your purchase decision most?",
+      options: [
+        "Price",
+        "Quality",
+        "Reviews",
+        "Brand"
+      ]
+    },
+
+    {
+      question: "How satisfied are you with online shopping?",
+      options: [
+        "Very satisfied",
+        "Satisfied",
+        "Neutral",
+        "Not satisfied"
+      ]
+    }
+
+  ];
+
+
+  let currentQuestion = 0;
+
+
+  function loadQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber")
+      .textContent =
+      "Question " +
+      (currentQuestion + 1) +
+      " of " +
+      questions.length;
+
+    document.getElementById("questionText")
+      .textContent = q.question;
+
+    const options =
+      document.getElementById("options");
+
+    options.innerHTML = "";
+
+    q.options.forEach(function(option) {
+
+      options.innerHTML += `
+        <label class="option">
+          <input
+            type="radio"
+            name="answer"
+            value="${option}"
+          >
+          ${option}
+        </label>
+      `;
+
+    });
+
+
+    const progress =
+      ((currentQuestion + 1) /
+      questions.length) * 100;
+
+    document.getElementById("progressBar")
+      .style.width = progress + "%";
+
+  }
+
+
+  function nextQuestion() {
+
+    const selected =
+      document.querySelector(
+        'input[name="answer"]:checked'
+      );
+
+    if (!selected) {
+
+      alert("Please select an answer first.");
+
+      return;
+
+    }
+
+
+    if (currentQuestion <
+        questions.length - 1) {
+
+      currentQuestion++;
+
+      loadQuestion();
+
+    } else {
+
+      document.getElementById("questionBox")
+        .style.display = "none";
+
+      document.getElementById("completeBox")
+        .style.display = "block";
+
+    }
+
+  }
+
+
+  function goBack() {
+
+    window.location.href = "surveys.html";
+
+  }
+
+
+  function dashboard() {
+
+    window.location.href = "dashboard.html";
+
+  }
+
+
+  loadQuestion();
+
+</script>
+
+</body>
+  </html>
