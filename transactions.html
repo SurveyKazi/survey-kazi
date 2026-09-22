@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History - SurveyKazi</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #0b5ed7;
+            color: white;
+            padding: 18px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 25px auto;
+            padding: 0 18px;
+        }
+
+        .balance {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .balance h2 {
+            margin: 5px 0;
+            color: #0b5ed7;
+            font-size: 30px;
+        }
+
+        .balance p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .history {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .history-title {
+            padding: 18px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .history-title h2 {
+            margin: 0;
+        }
+
+        .transaction {
+            padding: 17px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .transaction:last-child {
+            border-bottom: none;
+        }
+
+        .details h3 {
+            margin: 0 0 5px;
+            font-size: 16px;
+        }
+
+        .details p {
+            margin: 0;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .amount {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .earning {
+            color: #198754;
+        }
+
+        .withdrawal {
+            color: #dc3545;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .empty {
+            padding: 35px 20px;
+            text-align: center;
+            color: #777;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin: 25px 0;
+            color: #0b5ed7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>SurveyKazi</h1>
+</header>
+
+<div class="container">
+
+    <div class="balance">
+        <p>Available Balance</p>
+        <h2><span id="balance">0</span> Points</h2>
+    </div>
+
+    <div class="history">
+
+        <div class="history-title">
+            <h2>Transaction History</h2>
+        </div>
+
+        <div id="transactions"></div>
+
+    </div>
+
+    <a href="dashboard.html" class="back">← Back to Dashboard</a>
+
+</div>
+
+<script>
+
+    // Get current balance
+    let points = Number(localStorage.getItem("surveyPoints")) || 0;
+
+    document.getElementById("balance").textContent = points;
+
+
+    // Get saved transactions
+    let transactions =
+        JSON.parse(localStorage.getItem("surveyTransactions")) || [];
+
+
+    const container = document.getElementById("transactions");
+
+
+    if (transactions.length === 0) {
+
+        container.innerHTML = `
+            <div class="empty">
+                <p>No transactions yet.</p>
+                <p>Complete a survey to earn your first points.</p>
+            </div>
+        `;
+
+    } else {
+
+        transactions.forEach(function(transaction) {
+
+            const row = document.createElement("div");
+
+            row.className = "transaction";
+
+            if (transaction.type === "earning") {
+
+                row.innerHTML = `
+                    <div class="details">
+                        <h3>${transaction.description}</h3>
+                        <p>${transaction.date}</p>
+                    </div>
+
+                    <div class="amount earning">
+                        +${transaction.amount} Points
+                    </div>
+                `;
+
+            } else {
+
+                row.innerHTML = `
+                    <div class="details">
+                        <h3>${transaction.description}</h3>
+                        <p>${transaction.date}</p>
+                        <span class="status">${transaction.status}</span>
+                    </div>
+
+                    <div class="amount withdrawal">
+                        -${transaction.amount} Points
+                    </div>
+                `;
+            }
+
+            container.appendChild(row);
+
+        });
+    }
+
+</script>
+
+</body>
+</html>
