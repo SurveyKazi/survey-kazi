@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SurveyKazi | Surveys</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .back {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 35px 6%;
+    }
+
+    .intro {
+      margin-bottom: 25px;
+    }
+
+    .intro h1 {
+      margin-bottom: 8px;
+    }
+
+    .intro p {
+      color: #667085;
+    }
+
+    .survey-card {
+      background: white;
+      padding: 25px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .survey-card h2 {
+      margin-bottom: 10px;
+    }
+
+    .survey-card p {
+      color: #667085;
+      line-height: 1.5;
+    }
+
+    .info {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }
+
+    .badge {
+      background: #eef2ff;
+      color: #3730a3;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .reward {
+      background: #ecfdf3;
+      color: #15803d;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    footer {
+      margin-top: 30px;
+      background: #111827;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    SurveyKazi
+  </div>
+
+  <a class="back" href="dashboard.html">
+    ← Dashboard
+  </a>
+
+</header>
+
+
+<div class="container">
+
+  <div class="intro">
+
+    <h1>Available Surveys</h1>
+
+    <p>
+      Choose a survey that is available to you.
+    </p>
+
+  </div>
+
+
+  <div class="survey-card">
+
+    <h2>Consumer Shopping Survey</h2>
+
+    <p>
+      Share your opinions about shopping,
+      products and consumer preferences.
+    </p>
+
+    <div class="info">
+
+      <span class="badge">
+        5–10 minutes
+      </span>
+
+      <span class="badge reward">
+        50 Points
+      </span>
+
+    </div>
+
+    <button onclick="openSurvey('Consumer Shopping Survey')">
+      Start Survey
+    </button>
+
+  </div>
+
+
+  <div class="survey-card">
+
+    <h2>Technology Survey</h2>
+
+    <p>
+      Tell us about your smartphone and
+      technology usage.
+    </p>
+
+    <div class="info">
+
+      <span class="badge">
+        10 minutes
+      </span>
+
+      <span class="badge reward">
+        100 Points
+      </span>
+
+    </div>
+
+    <button onclick="openSurvey('Technology Survey')">
+      Start Survey
+    </button>
+
+  </div>
+
+
+  <div class="survey-card">
+
+    <h2>Entertainment Survey</h2>
+
+    <p>
+      Share your preferences regarding
+      entertainment and digital media.
+    </p>
+
+    <div class="info">
+
+      <span class="badge">
+        5 minutes
+      </span>
+
+      <span class="badge reward">
+        75 Points
+      </span>
