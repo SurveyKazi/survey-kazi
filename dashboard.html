@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SurveyKazi | Dashboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logout {
+      background: #ef4444;
+      color: white;
+      padding: 9px 15px;
+      border-radius: 7px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 6%;
+    }
+
+    .welcome {
+      margin-bottom: 25px;
+    }
+
+    .welcome h1 {
+      font-size: 28px;
+      margin-bottom: 7px;
+    }
+
+    .welcome p {
+      color: #667085;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(180px, 1fr)
+      );
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .stat {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+    }
+
+    .stat-title {
+      color: #667085;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .stat-value {
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    .section-title {
+      margin-bottom: 18px;
+      font-size: 22px;
+    }
+
+    .survey-list {
+      display: grid;
+      gap: 15px;
+    }
+
+    .survey {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+    }
+
+    .survey h3 {
+      margin-bottom: 7px;
+    }
+
+    .survey p {
+      color: #667085;
+      font-size: 14px;
+    }
+
+    .reward {
+      color: #16a34a;
+      font-weight: bold;
+      margin-top: 8px;
+      display: block;
+    }
+
+    .start {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 11px 17px;
+      border-radius: 7px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .account {
+      margin-top: 35px;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    .account p {
+      margin: 10px 0;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 25px;
+      text-align: center;
+      background: #111827;
+      color: #cbd5e1;
+    }
+
+    @media(max-width:600px) {
+
+      .survey {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .start {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    SurveyKazi
+  </div>
+
+  <button class="logout" onclick="logout()">
+    Logout
+  </button>
+
+</header>
+
+
+<div class="container">
+
+  <div class="welcome">
+
+    <h1>Welcome to your Dashboard 👋</h1>
+
+    <p>
+      Manage your surveys, rewards and account activity.
+    </p>
+
+  </div>
+
+
+  <!-- ACCOUNT STATISTICS -->
+
+  <div class="stats">
+
+    <div class="stat">
+
+      <div class="stat-title">
+        Available Points
+      </div>
+
+      <div class="stat-value">
+        0
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-title">
+        Surveys Completed
+      </div>
+
+      <div class="stat-value">
+        0
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-title">
+        Pending Rewards
+      </div>
+
+      <div class="stat-value">
+        0
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SURVEYS -->
+
+  <h2 class="section-title">
+    Available Surveys
+  </h2>
+
+  <div class="survey-list">
+
+
+    <div class="survey">
+
+      <div>
+
+        <h3>
+          Consumer Shopping Survey
+        </h3>
+
+        <p>
+          Tell us about your shopping preferences.
+        </p>
+
+        <span class="reward">
+          50 Points
+        </span>
+
+      </div>
+
+      <button
+        class="start"
+        onclick="startSurvey('Consumer Shopping Survey')"
+      >
+        Start
+      </button>
+
+    </div>
+
+
+    <div class="survey">
+
+      <div>
+
+        <h3>
+          Technology Survey
+        </h3>
+
+        <p>
+          Share your experience with smartphones.
+        </p>
+
+        <span class="reward">
+          100 Points
+        </span>
+
+      </div>
+
+      <button
+        class="start"
+        onclick="startSurvey('Technology Survey')"
+      >
+        Start
+      </button>
+
+    </div>
+
+
+    <div class="survey">
+
+      <div>
+
+        <h3>
+          Entertainment Survey
+        </h3>
+
+        <p>
+          Tell us about your entertainment preferences.
+        </p>
+
+        <span class="reward">
+          75 Points
+        </span>
+
+      </div>
+
+      <button
+        class="start"
+        onclick="startSurvey('Entertainment Survey')"
+      >
+        Start
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ACCOUNT -->
+
+  <div class="account">
+
+    <h2>Account</h2>
+
+    <p>
+      <strong>Status:</strong> Active
+    </p>
+
+    <p>
+      <strong>Verification:</strong> Not verified
+    </p>
+
+    <p>
+      <strong>Withdrawal:</strong> Not available yet
+    </p>
+
+  </div>
+
+</div>
+
+
+<footer>
+
+  © 2026 SurveyKazi. All rights reserved.
+
+</footer>
+
+
+<script>
+
+  function startSurvey(name) {
+
+    alert(
+      name +
+      " will open here once the real survey system is connected."
+    );
+
+  }
+
+
+  function logout() {
+
+    window.location.href = "index.html";
+
+  }
+
+</script>
+
+</body>
+        </html>
