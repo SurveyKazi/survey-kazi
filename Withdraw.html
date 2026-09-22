@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SurveyKazi | Withdraw</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .back {
+      color: white;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 550px;
+      margin: auto;
+      padding: 35px 6%;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    }
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    .description {
+      color: #667085;
+      margin-bottom: 25px;
+    }
+
+    .balance {
+      background: #eef2ff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+
+    .balance span {
+      display: block;
+      color: #667085;
+      margin-bottom: 7px;
+    }
+
+    .balance strong {
+      font-size: 28px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    select,
+    input {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 18px;
+      border: 1px solid #d0d5dd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 14px;
+      background: #fff7ed;
+      color: #9a3412;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 40px;
+      background: #111827;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    SurveyKazi
+  </div>
+
+  <a href="dashboard.html" class="back">
+    ← Dashboard
+  </a>
+
+</header>
+
+
+<div class="container">
+
+  <div class="card">
+
+    <h1>Withdraw Rewards</h1>
+
+    <p class="description">
+      Request a withdrawal from your available
+      SurveyKazi balance.
+    </p>
+
+
+    <div class="balance">
+
+      <span>Available Points</span>
+
+      <strong id="balance">
+        0
+      </strong>
+
+    </div>
+
+
+    <form onsubmit="requestWithdrawal(event)">
+
+      <label>
+        Payment Method
+      </label>
+
+      <select id="method" required>
+
+        <option value="">
+          Select payment method
+        </option>
+
+        <option value="M-PESA">
+          M-PESA
+        </option>
+
+        <option value="Bank">
+          Bank Transfer
+        </option>
+
+      </select>
+
+
+      <label>
+        Account / Phone Number
+      </label>
+
+      <input
+        type="text"
+        id="account"
+        placeholder="Enter payment details"
+        required
+      >
+
+
+      <label>
+        Points to Withdraw
+      </label>
+
+      <input
+        type="number"
+        id="amount"
+        min="1"
+        placeholder="Enter points"
+        required
+      >
+
+
+      <button type="submit">
+        Request Withdrawal
+      </button>
+
+    </form>
+
+
+    <div class="notice">
+
+      Withdrawal processing, minimum withdrawal
+      requirements and payment verification will
+      be configured when the real payment system
+      is connected.
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<footer>
+
+  © 2026 SurveyKazi
+
+</footer>
+
+
+<script>
+
+  const points =
+    localStorage.getItem("surveyPoints") || 0;
+
+  document.getElementById("balance")
+    .textContent = points;
+
+
+  function requestWithdrawal(event) {
+
+    event.preventDefault();
+
+    const amount =
+      Number(document.getElementById("amount").value);
+
+    const balance =
+      Number(localStorage.getItem("surveyPoints") || 0);
+
+
+    if (amount > balance) {
+
+      alert(
+        "You do not have enough points for this request."
+      );
+
+      return;
+
+    }
+
+
+    alert(
+      "Withdrawal request received. " +
+      "The real payment system will be connected later."
+    );
+
+  }
+
+</script>
+
+</body>
+  </html>
