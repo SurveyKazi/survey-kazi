@@ -1,220 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account - SurveyKazi</title>
 
-  <title>SurveyKazi | Create Account</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+header {
+    background: #0b5ed7;
+    color: white;
+    text-align: center;
+    padding: 18px;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fb;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
+.container {
+    max-width: 450px;
+    margin: 35px auto;
+    padding: 0 18px;
+}
 
-    .container {
-      width: 100%;
-      max-width: 450px;
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    }
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 
-    .logo {
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      color: #2563eb;
-      margin-bottom: 10px;
-    }
+h2 {
+    color: #0b5ed7;
+}
 
-    h1 {
-      text-align: center;
-      font-size: 25px;
-      margin-bottom: 8px;
-    }
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
 
-    .subtitle {
-      text-align: center;
-      color: #667085;
-      margin-bottom: 25px;
-    }
+input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
 
-    label {
-      display: block;
-      margin-bottom: 7px;
-      font-weight: bold;
-    }
+.checkbox {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 13px;
+}
 
-    input {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #d0d5dd;
-      border-radius: 8px;
-      margin-bottom: 17px;
-      font-size: 16px;
-    }
+.checkbox input {
+    width: auto;
+}
 
-    input:focus {
-      outline: none;
-      border-color: #2563eb;
-    }
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background: #0b5ed7;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
 
-    .terms {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      margin-bottom: 20px;
-      font-size: 14px;
-      color: #667085;
-    }
+.link {
+    text-align: center;
+    margin-top: 18px;
+}
 
-    .terms input {
-      width: auto;
-      margin-top: 3px;
-    }
+.link a {
+    color: #0b5ed7;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #2563eb;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    .login {
-      text-align: center;
-      margin-top: 20px;
-      color: #667085;
-    }
-
-    .login a {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .back {
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-      color: #667085;
-      text-decoration: none;
-    }
-  </style>
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #0b5ed7;
+    text-decoration: none;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<header>
+    <h1>SurveyKazi</h1>
+</header>
 
-    <div class="logo">SurveyKazi</div>
+<div class="container">
 
-    <h1>Create Your Account</h1>
+<div class="card">
 
-    <p class="subtitle">
-      Join SurveyKazi and explore available surveys.
-    </p>
+<h2>Create Your Account</h2>
 
-    <form onsubmit="registerUser(event)">
+<form onsubmit="register(event)">
 
-      <label>Full Name</label>
-      <input
-        type="text"
-        id="name"
-        placeholder="Enter your full name"
-        required
-      >
+<label>Full Name</label>
+<input type="text" id="name" required>
 
-      <label>Email Address</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="Enter your email"
-        required
-      >
+<label>Email Address</label>
+<input type="email" id="email" required>
 
-      <label>Phone Number</label>
-      <input
-        type="tel"
-        id="phone"
-        placeholder="e.g. 0712345678"
-        required
-      >
+<label>Phone Number</label>
+<input type="tel" id="phone" required>
 
-      <label>Password</label>
-      <input
-        type="password"
-        id="password"
-        placeholder="Create a password"
-        minlength="6"
-        required
-      >
+<label>Password</label>
+<input type="password" id="password" required>
 
-      <div class="terms">
-        <input type="checkbox" required>
+<div class="checkbox">
+<input type="checkbox" id="terms" required>
+<span>I agree to the SurveyKazi terms and conditions.</span>
+</div>
 
-        <span>
-          I agree to the SurveyKazi terms and conditions.
-        </span>
-      </div>
+<button type="submit">
+Create Account
+</button>
 
-      <button type="submit">
-        Create Account
-      </button>
+</form>
 
-    </form>
+<div class="link">
+Already have an account?
+<a href="login.html">Login</a>
+</div>
 
-    <div class="login">
-      Already have an account?
-      <a href="login.html">Login</a>
-    </div>
+</div>
 
-    <a class="back" href="index.html">
-      ← Back to SurveyKazi
-    </a>
+<a href="index.html" class="back">
+← Back to Home
+</a>
 
-  </div>
+</div>
 
+<script>
 
-  <script>
+function register(event) {
 
-    function registerUser(event) {
+    event.preventDefault();
 
-      event.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value;
 
-      const name =
-        document.getElementById("name").value;
+    // Demo account storage
+    localStorage.setItem("surveyUser", JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        password: password
+    }));
 
-      alert(
-        "Welcome to SurveyKazi, " +
-        name +
-        "! Your registration system will be connected to a secure database next."
-      );
+    // Start account with zero points
+    localStorage.setItem("surveyPoints", "0");
+    localStorage.setItem("completedSurveys", "0");
+    localStorage.setItem("surveyTransactions", "[]");
 
-    }
+    alert("Account created successfully!");
 
-  </script>
+    window.location.href = "login.html";
+}
+
+</script>
 
 </body>
-  </html>
+</html>
